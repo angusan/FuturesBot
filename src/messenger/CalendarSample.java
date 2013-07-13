@@ -84,7 +84,7 @@ public class CalendarSample {
   private static Credential authorize() throws Exception {
     // load client secrets
     GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(
-        JSON_FACTORY, new FileInputStream("client_secrets.json_futuresbot"));
+        JSON_FACTORY, new FileInputStream("client_secrets.json"));
     if (clientSecrets.getDetails().getClientId().startsWith("Enter")
         || clientSecrets.getDetails().getClientSecret().startsWith("Enter ")) {
       System.out.println(
@@ -94,7 +94,7 @@ public class CalendarSample {
     }
     // set up file credential store
     FileCredentialStore credentialStore = new FileCredentialStore(
-        new File("calendar.json_futuresbot"), JSON_FACTORY);
+        new File("calendar.json"), JSON_FACTORY);
     // set up authorization code flow
     GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
         HTTP_TRANSPORT, JSON_FACTORY, clientSecrets,
