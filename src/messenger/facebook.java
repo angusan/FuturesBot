@@ -24,7 +24,9 @@
  */
 package messenger;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -132,8 +134,8 @@ public class facebook implements MessageListener {
 	public static void main(String args[]) throws XMPPException, IOException {
 		// declare variables
 		facebook c = facebook.getInstance();
-		/*BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String msg;*/
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String msg;
 
 		// turn on the enhanced debugger
 		XMPPConnection.DEBUG_ENABLED = false;
@@ -145,10 +147,10 @@ public class facebook implements MessageListener {
 		c.displayBuddyList();
 		System.out.println("-----");
 
-		/*while (!(msg = br.readLine()).equals("bye")) {
+		while (!(msg = br.readLine()).equals("bye")) {
 			// your buddy's gmail address goes here
-			c.sendMessage(msg, "-517003764@chat.facebook.com");
-		}*/
+			c.sendMessage(msg, "Rec_FB_ID_SN");
+		}
 
 		c.disconnect();
 		System.exit(0);
