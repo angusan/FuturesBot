@@ -181,7 +181,7 @@ public class facebook implements MessageListener {
 
 		// provide your login information here
 		try {
-			c.login("futures" + bot, password);
+			c.login("FB_ID_SN", password);
 			fclient.getBuddyList();
 			for (String list: sendlist){
 				c.sendMessage(msg, list);
