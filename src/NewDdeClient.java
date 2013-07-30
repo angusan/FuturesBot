@@ -25,12 +25,14 @@
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Properties;
 import java.util.Queue;
 import java.util.Random;
 import java.util.TimeZone;
@@ -141,6 +143,20 @@ public class NewDdeClient {
 	}
 
 	public NewDdeClient() {
+		Properties prop = new Properties();
+    	try {
+            //load a properties file
+    		prop.load(new FileInputStream("config.properties"));
+            //get the property value and print it out
+    		setRange(Integer.parseInt(prop.getProperty("range")));
+    		setSGXGapA(Double.parseDouble(prop.getProperty("SGXGapA")));
+    		setSGXGapB(Double.parseDouble(prop.getProperty("SGXGapB")));
+    		setSGXGapL(Double.parseDouble(prop.getProperty("SGXGapL")));
+    		setSGXGapLin(Double.parseDouble(prop.getProperty("SGXGapLin")));
+    	} catch (IOException ex) {
+    		ex.printStackTrace();
+        }
+		
 		try {
 			FileInputStream fis = new FileInputStream("D:\\Dropbox\\Fu.ser");
 			ObjectInputStream ois = new ObjectInputStream(fis);
@@ -2015,5 +2031,25 @@ public class NewDdeClient {
 		SimpleDateFormat sf = new SimpleDateFormat("HH:mm:ss E",
 				java.util.Locale.TAIWAN);
 		SGXTime = sf.format(now);
+	}
+	
+	private void setRange(int range) {
+		this.range = range;
+	}
+
+	private void setSGXGapA(double sGXGapA) {
+		SGXGapA = sGXGapA;
+	}
+
+	private void setSGXGapB(double sGXGapB) {
+		SGXGapB = sGXGapB;
+	}
+
+	private void setSGXGapL(double sGXGapL) {
+		SGXGapL = sGXGapL;
+	}
+
+	private void setSGXGapLin(double sGXGapLin) {
+		SGXGapLin = sGXGapLin;
 	}
 }
